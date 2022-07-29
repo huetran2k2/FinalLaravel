@@ -152,7 +152,7 @@
                                            
                         </li>
                                         
-                        <li class="payment_method_vnpay">
+                        {{-- <li class="payment_method_vnpay">
                                              <input id="payment_method_vnpay" type="radio" class="input-radio" name="payment_method" value="vnpay"											
                                                data-order_button_text="Proceed to VnPay">											
                                              <label for="payment_method_vnpay">VnPay</label>											
@@ -162,8 +162,14 @@
                                                 
                            </div>
                                            
-                        </li>
-                                      
+                        </li> --}}
+                                  
+                        <li class="payment_method_cheque"><input 
+                           id="payment_method_cheque" type="radio" class="input-radio" 
+                           name="payment_method" value="VNPAY" data-order_button_text="">
+                           <label for="payment_method_cheque">Thanh toán online</label>
+                           </li>
+                           
                      </ul>
                                  
                   </div>

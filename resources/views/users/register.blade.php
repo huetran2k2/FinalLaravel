@@ -31,7 +31,7 @@
 
           <div class="form-block">
             <label for="name">Fullname*</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="full_name" required>
           </div>
 
           <div class="form-block">

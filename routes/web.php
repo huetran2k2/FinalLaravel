@@ -19,22 +19,22 @@ use App\Http\Controllers\UserController;
 // });
 
 // ----------------- TRANG CHU ---------------
-Route::get('/', [PageController::class , 'getIndex']);
-Route::get('/type/{id}', [PageController::class , 'getLoaiSp']);
+Route::get('/', [PageController::class, 'getIndex']);
+Route::get('/type/{id}', [PageController::class, 'getLoaiSp']);
 
 Route::get('/detail/{id}', [PageController::class, 'getDetail']);
 
 
-Route::get('/contact', [PageController::class , 'getContact']);
-Route::get('/about', [PageController::class , 'getAbout']);
+Route::get('/contact', [PageController::class, 'getContact']);
+Route::get('/about', [PageController::class, 'getAbout']);
 // ----------------- TRANG ADMIN ---------------
-Route::get('/formAdd', [PageController::class , 'getAdminpage'])->name('admin');
-Route::post('/formAdd', [PageController::class , 'postAdminAdd'])->name('add-product');
-Route::get('/showadmin',[PageController::class, 'getIndexAdmin']);
+Route::get('/formAdd', [PageController::class, 'getAdminpage'])->name('admin');
+Route::post('/formAdd', [PageController::class, 'postAdminAdd'])->name('add-product');
+Route::get('/showadmin', [PageController::class, 'getIndexAdmin']);
 
-Route::get('/admin-edit-form/{id}',[PageController::class,'getAdminEdit']);
-Route::post('/admin-edit',[PageController::class,'postAdminEdit']);
-Route::post('/admin-delete/{id}',[PageController::class,'postAdminDelete']);
+Route::get('/admin-edit-form/{id}', [PageController::class, 'getAdminEdit']);
+Route::post('/admin-edit', [PageController::class, 'postAdminEdit']);
+Route::post('/admin-delete/{id}', [PageController::class, 'postAdminDelete']);
 
 //---------------- CART ---------------
 Route::get('add-to-cart/{id}', [PageController::class, 'getAddToCart'])->name('themgiohang');
@@ -54,17 +54,27 @@ Route::get('/login', function () {
 Route::get('/logout', [UserController::class, 'Logout']);
 Route::post('/login', [UserController::class, 'Login']);
 
-															
-	// ----------------- CHECKOUT ---------------														
-Route::get('check-out', [PageController::class, 'getCheckout'])->name('dathang');														
-Route::post('check-out', [PageController::class, 'postCheckout'])->name('dathang');														
+
+// ----------------- CHECKOUT ---------------														
+Route::get('check-out', [PageController::class, 'getCheckout'])->name('dathang');
+Route::post('check-out', [PageController::class, 'postCheckout'])->name('dathang');
 // ---------------- Payment with VNPAY
-Route::get('/return-vnpay', function () {					
- return view('vnpay.return-vnpay');
-});					
+// Route::get('/return-vnpay', function () {					
+//  return view('vnpay.return-vnpay');
+// });					
 
+Route::get('/vnpay-index', function () {
+    return view('/vnpay/vnpay-index');
+});
+//Route xử lý nút Xác nhận thanh toán trên trang checkout.blade.php
+// Route::get('/vnpay/create_payment', [PageController::class, 'createPayment'])->name('postCreatePayment');
 
-
+Route::post('/vnpay/create_payment', [PageController::class, 'createPayment'])->name('postCreatePayment');
+//Route để gán cho key "vnp_ReturnUrl" ở bước 6
+Route::get('/vnpay/vnpay-return', [PageController::class, 'vnpayReturn'])->name('vnpayReturn');
+    
+Route::get('/input-email',[PageController::class,'getInputEmail'])->name('getInputEmail');
+Route::post('/input-email',[PageController::class,'postInputEmail'])->name('postInputEmail');
 
 
 
@@ -105,5 +115,3 @@ Route::get('/return-vnpay', function () {
 //     $data =DB::table('customers')->distinct()->get();
 //     print_r($data);
 // });
-
-
